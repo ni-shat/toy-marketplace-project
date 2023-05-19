@@ -41,7 +41,7 @@ const Header = () => {
                                 <ActiveLink to='/all-toys'>All Toys</ActiveLink>
                             </li>
                             <li>
-                                <ActiveLink to='/my-toys'>My Toys</ActiveLink>
+                                <ActiveLink to='/auth-layout/my-toys'>My Toys</ActiveLink>
                             </li>
                             <li>
                                 <ActiveLink to='/add-a-toy'>Add A Toy</ActiveLink>
@@ -66,10 +66,10 @@ const Header = () => {
                             <ActiveLink to='/all-toys'>All Toys</ActiveLink>
                         </li>
                         <li>
-                            <ActiveLink to='/my-toys'>My Toys</ActiveLink>
+                            <ActiveLink to='/add-a-toy'>Add A Toy</ActiveLink>
                         </li>
                         <li>
-                            <ActiveLink to='/add-a-toy'>Add A Toy</ActiveLink>
+                            <ActiveLink to='/auth-layout/my-toys'>My Toys</ActiveLink>
                         </li>
                         <li>
                             <ActiveLink to='/Blogs'>Blog</ActiveLink>
