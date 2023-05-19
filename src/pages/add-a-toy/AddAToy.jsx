@@ -1,6 +1,7 @@
 import Header from "../shared/header/Header";
 import bear from '../../assets/auth/bear.jpeg';
 import { useState } from "react";
+import Swal from 'sweetalert2'
 
 
 const AddAToy = () => {
@@ -45,7 +46,12 @@ const AddAToy = () => {
         .then(data => {
             console.log(data);
             if(data.insertedId){
-                alert('data added successfully')
+                Swal.fire({
+                    title: 'success!',
+                    text: 'Added',
+                    icon: 'Successfully added.',
+                    confirmButtonText: 'Cool'
+                  })
             }
         })
     }
