@@ -13,10 +13,10 @@ const Toy = ({ toy }) => {
                 <p>{price}</p>
                 <p>
                     <p>{category}</p>
-                    <p>{rating}</p>
+                    <p> {rating}</p>
                 </p>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Buy Now</button>
+                    <button className="btn border-0 btn-primary bg-[#70b2a2] font-semibold">Buy Now</button>
                 </div>
             </div>
         </div>
