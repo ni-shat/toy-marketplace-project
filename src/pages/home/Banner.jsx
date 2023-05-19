@@ -20,7 +20,7 @@ const Banner = () => {
                 <img className='w-[20%] absolute top-[500px] right-10  opacity-10' src={elephant} alt="" />
             </div>
             {/* <img src={banner} alt="" /> */}
-            <div className=' w-[35%] mx-auto mt-32 md:ml-44 '>
+            <div className=' w-[35%] mx-auto mt-32 md:ml-36'>
                 <h1 className='text-5xl text-gray-600 font-medium '>Explore and Shop the Best Toys!</h1>
                 <p className='text-base text-gray-500  mt-8 leading-8'>
                     Dive into a World of Toys and Imagination!
@@ -29,10 +29,10 @@ const Banner = () => {
             </div>
             <div className='w-[60%] relative '>
 
-                <div className='absolute top-7 left-0'>
-                    <img className='w-[95%]' src={girl} alt="" />
+                <div className='absolute top-0 left-16'>
+                    <img className='w-full' src={girl} alt="" />
                 </div>
-                <div className='absolute top-10 right-32'>
+                <div className='absolute top-24 right-20'>
                     <img className='w-3/4' src={boy1} alt="" />
                 </div>
 
