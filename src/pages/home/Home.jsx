@@ -6,7 +6,7 @@ import Categories from "./shopOfToys/Categories";
 
 const Home = () => {
     const loadedToys = useLoaderData();
-    console.log("data", loadedToys)
+    console.log("data from home", loadedToys)
 
     return (
         <div>

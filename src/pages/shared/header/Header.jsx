@@ -146,7 +146,7 @@ const Header = () => {
 
                             <div className='space-y-3 items-center gap-x-6 md:flex md:space-y-0'>
                                 {
-                                    user ? <button onClick={handleLogout} className='px-10 py-2 text-white duration-150 rounded-lg bg-[#7ec7b5] hover:bg-slate-200 active:shadow-lg font-bold'>Log out</button>
+                                    user ? <button onClick={handleLogout} className='px-10 py-2 text-white duration-150 rounded-lg bg-[#ED71A3] hover:bg-slate-200 active:shadow-lg font-bold'>Log out</button>
                                         :
                                         <Link to='/auth-layout/login'><button className='px-10 py-2 text-white duration-150 rounded-lg bg-[#ED71A3] hover:bg-slate-200 active:shadow-lg font-bold'>Login</button></Link>
 
