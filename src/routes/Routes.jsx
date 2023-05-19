@@ -8,6 +8,7 @@ import Register from "../pages/auth/Register";
 import AddAToy from "../pages/add-a-toy/AddAToy";
 import PrivateRoute from "./PrivateRoute";
 import MyToys from "../pages/my-toys/MyToys";
+import Option from "../components/Option";
 
 
 const router = createBrowserRouter([

@@ -1,50 +1,15 @@
-import { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import CategoryTab from './CategoryTab';
 import CategoryTabPanel from './CategoryTabPanel';
+import { useState } from 'react';
+import RetrieveCategories from '../../../utilities/retrieve-categories/RetrieveCategories';
 
 const Categories = () => {
 
     const [tabIndex, setTabIndex] = useState(0);
-    const [loadedData, setLoadedData] = useState([]);
-    const [categoriesAr, setCategoriesAr] = useState([]); // this will only store all the category names of toys the website contains. 
-    const [toysOfCategories, setToysOfCategories] = useState([]); // this stores the toys of specific categories. 
 
-    useEffect(() => {
-        fetch('http://localhost:5000/toys')
-            .then(res => res.json())
-            .then(data => setLoadedData(data))
-    }, []);
-
-    useEffect(() => {
-        console.log("loadedData", loadedData)
-        let tempCategory = [];
-
-        for (const element of loadedData) {
-            if (!tempCategory.includes(element.category)) {
-                tempCategory.push(element.category);
-            }
-        }
-        setCategoriesAr(tempCategory);
-
-
-        let tempToys_OfOneCategory_Ar = [];
-
-        for (const category of tempCategory) {
-            const toysOf_OneCategory = loadedData.filter(data => data.category == category);
-            console.log(category);
-            console.log(toysOf_OneCategory);
-
-            tempToys_OfOneCategory_Ar.push(toysOf_OneCategory); // this arr is storing all toys by specific categories.
-        }
-        setToysOfCategories(tempToys_OfOneCategory_Ar);
-
-    }, [loadedData]);
-
-
-    console.log("baire", toysOfCategories);
-
+    const {categoriesAr, toysOfCategories} = RetrieveCategories();
+    
 
     return (
         <Tabs className='mt-20 w-[85%] mx-auto' selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)} id="controlled-tabs" selectedTabClassName="bg-blue">

@@ -1,26 +1,33 @@
 import Header from "../shared/header/Header";
 import bear from '../../assets/auth/bear.jpeg';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Swal from 'sweetalert2'
+import { AuthContext } from "../../providers/AuthProviders";
+import RetrieveCategories from "../../utilities/retrieve-categories/RetrieveCategories";
+import Option from "../../components/Option";
 
 
 const AddAToy = () => {
 
     const [selectedOption, setSelectedOption] = useState('');
+    const { user } = useContext(AuthContext);
+
+    const { categoriesAr } = RetrieveCategories();
+    console.log("categories inside add toy", categoriesAr)
 
 
     const handleAdding = (event) => {
         event.preventDefault();
-        
+
 
         const form = event.target;
         const toyName = form.toyName.value;
         const photo = form.photo.value;
         const quantity = form.quantity.value;
         const price = form.price.value;
-        const sellerName = form.sellerName.value;
+        const sellerName = user?.displayName;
         const description = form.description.value;
-        const email = form.email.value;
+        const email = user?.email;
         const rating = form.rating.value;
         const category = selectedOption;
         const toy = {
@@ -36,24 +43,24 @@ const AddAToy = () => {
         };
 
         fetch('http://localhost:5000/toy', {
-            method: 'POST', 
+            method: 'POST',
             headers: {
                 'content-type': 'application/json'
-            }, 
+            },
             body: JSON.stringify(toy)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if(data.insertedId){
-                Swal.fire({
-                    title: 'success!',
-                    text: 'Added',
-                    icon: 'Successfully added.',
-                    confirmButtonText: 'Cool'
-                  })
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'success!',
+                        text: 'Added',
+                        icon: 'Successfully added.',
+                        confirmButtonText: 'Cool'
+                    })
+                }
+            })
     }
 
     const handleOptionChange = (event) => {
@@ -120,7 +127,7 @@ const AddAToy = () => {
                                 </label>
                                 <label className="input-group">
                                     <span className="w-[90px]">name</span>
-                                    <input type="text" name="sellerName" placeholder="john" className="input flex-grow input-bordered" />
+                                    <input type="text" defaultValue={user?.displayName} name="sellerName" placeholder="john" className="input flex-grow input-bordered" readOnly />
                                 </label>
                             </div>
                             <div className="form-control w-2/4 ">
@@ -129,7 +136,7 @@ const AddAToy = () => {
                                 </label>
                                 <label className="input-group">
                                     <span className="w-[90px]">email</span>
-                                    <input type="text" name="email" placeholder="info@site.com" className="input flex-grow input-bordered" />
+                                    <input type="text" defaultValue={user?.email} placeholder="info@site.com" className="input flex-grow input-bordered" readOnly />
                                 </label>
                             </div>
                         </div>
@@ -148,36 +155,24 @@ const AddAToy = () => {
                                     <span className="label-text">Category</span>
                                 </label>
                                 <label className="input-group">
-                                    <span className="w-[90px]">rating</span>
+                                    <span className="w-[90px]">category</span>
                                     <select value={selectedOption} onChange={handleOptionChange} className="select select-bordered text-gray-800 font-normal w-full flex-1">
                                         <option disabled selected></option>
-                                        <option>Star Wars</option>
+                                        {
+                                            categoriesAr.map(category => <Option
+                                                key={categoriesAr.indexOf(category)}
+                                                category={category}
+                                            ></Option>)
+                                        }
+                                        {/* <option>Star Wars</option>
                                         <option>Harry Potter</option>
                                         <option>Lord of the Rings</option>
                                         <option>Planet of the Apes</option>
-                                        <option>Star Trek</option>
+                                        <option>Star Trek</option> */}
                                     </select>
                                 </label>
                             </div>
                         </div>
-
-                        {/* <div className="form-control">
-                            <div className="w-full">
-                                <label className="input-group">
-                                    <span className="w-[90px]">category</span>
-                                    <select value={selectedOption} onChange={handleOptionChange} className="select select-bordered text-gray-800 font-normal">
-                                        <option disabled selected></option>
-                                        <option>Star Wars</option>
-                                        <option>Harry Potter</option>
-                                        <option>Lord of the Rings</option>
-                                        <option>Planet of the Apes</option>
-                                        <option>Star Trek</option>
-                                    </select>
-                                </label>
-                            </div>
-                        </div> */}
-
-
 
 
                         {/* text area */}
