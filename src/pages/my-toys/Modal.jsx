@@ -30,7 +30,7 @@ const Modal = ({ id, setClickedUpdate,  isUpdated, setIsUpdated, setMyToys, myto
     // console.log("categories inside add toy", categoriesAr)
 
 
-    const handleAdding = (event) => {
+    const handleUpdate = (event) => {
         event.preventDefault();
 
         const form = event.target;
@@ -114,7 +114,7 @@ const Modal = ({ id, setClickedUpdate,  isUpdated, setIsUpdated, setMyToys, myto
                     <h3 className="text-4xl text-[#7ec7b5] text-center mb-10 font-extrabold">Update</h3>
                     {/* <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p> */}
                     <div className="min-w-[500px] max-w-[770px] h-fit px-8 pt-10 bg-white top-60 left-0 right-0 ml-auto mr-auto rounded-lg border">
-                        <form onSubmit={handleAdding} className='space-y-5 pb-20'>
+                        <form onSubmit={handleUpdate} className='space-y-5 pb-20'>
                             <div className='flex gap-8 justify-between'>
                                 <div className="form-control w-2/4">
                                     <label className="label">

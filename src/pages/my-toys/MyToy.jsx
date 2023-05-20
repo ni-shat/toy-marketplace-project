@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import { FaAngleRight } from "react-icons/fa";
 import { AuthContext } from "../../providers/AuthProviders";
 import Modal from "./Modal";
+import Swal from "sweetalert2";
 
 
 const MyToy = ({ toyDetails, nmb, setMyToys, mytoys }) => {
@@ -21,6 +22,43 @@ const MyToy = ({ toyDetails, nmb, setMyToys, mytoys }) => {
         setIsUpdated(false);
         setClickedUpdate(true);
     }
+
+    const handleDelete = id => {
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#7ec7b5',
+            confirmButtonText: 'Yes, delete it!'
+        })
+        .then((result) => {
+
+            if (result.isConfirmed) {
+
+                fetch(`http://localhost:5000/toys/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            // alert('deleted successful');
+                            // const remaining = bookings.filter(booking => booking._id !== id);
+                            // setBookings(remaining);
+                        }
+                    })
+            }
+        })
+    }
+
 
     return (
         <>
@@ -80,7 +118,7 @@ const MyToy = ({ toyDetails, nmb, setMyToys, mytoys }) => {
 
 
 
-                    <button className="btn w-32 text-red-600 border-red-600 btn-primary bg-white border hover:bg-slate-200 font-semibold flex gap-3 items-center">
+                    <button onClick={() => handleDelete(_id)} className="btn w-32 text-red-600 border-red-600 btn-primary bg-white border hover:bg-slate-200 font-semibold flex gap-3 items-center">
                         <div className="flex gap-2">
                             <span>Delete </span> <FontAwesomeIcon icon={faTrashCan} />
                         </div>
