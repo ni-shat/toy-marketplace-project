@@ -15,10 +15,10 @@ const MyToy = ({ toyDetails, nmb, setMyToys, mytoys }) => {
     const [isUpdated, setIsUpdated] = useState(false); console.log(isUpdated)
 
     const { _id, pictureUrl, name, price, rating, availableQuantity, category, description } = toyDetails;
-    console.log("in my toy", toyDetails)
+    
 
     const handleUpdate = (id) => {
-        console.log('function', id);
+        // console.log('function', id);
         setIsUpdated(false);
         setClickedUpdate(true);
     }
@@ -50,9 +50,8 @@ const MyToy = ({ toyDetails, nmb, setMyToys, mytoys }) => {
                                 'Your file has been deleted.',
                                 'success'
                             )
-                            // alert('deleted successful');
-                            // const remaining = bookings.filter(booking => booking._id !== id);
-                            // setBookings(remaining);
+                            const remaining = mytoys.filter(toy => toy._id !== id);
+                            setMyToys(remaining);
                         }
                     })
             }

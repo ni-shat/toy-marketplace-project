@@ -31,8 +31,8 @@ const RetrieveCategories = () => {
 
         for (const category of tempCategory) {
             const toysOf_OneCategory = loadedData.filter(data => data.category == category);
-            // console.log(category);
-            // console.log(toysOf_OneCategory);
+            console.log(category);
+            console.log(toysOf_OneCategory);
 
             tempToys_OfOneCategory_Ar.push(toysOf_OneCategory); // this arr is storing all toys by specific categories.
         }
@@ -41,7 +41,7 @@ const RetrieveCategories = () => {
     }, [loadedData]);
 
 
-    // console.log("baire", toysOfCategories);
+    console.log("baire", toysOfCategories);
 
     return { categoriesAr, toysOfCategories};
 };

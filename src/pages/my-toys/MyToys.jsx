@@ -1,6 +1,7 @@
 import MyToy from "./MyToy";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
+import Dropdown from "../../components/Dropdown";
 
 
 const MyToys = () => {
@@ -9,20 +10,74 @@ const MyToys = () => {
     console.log("User", user.email)
 
     const [mytoys, setMyToys] = useState([]);
+    const [mytoysAs, setMyToysAs] = useState([]);
+    const [mytoysDs, setMyToysDs] = useState([]);
 
     const url = `http://localhost:5000/mytoys?email=${user?.email}`;
 
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
-            .then(data => setMyToys(data))
+            .then(data => {
+                //data is an object
+                const {resultAll, resultAs, resultDs} = data;
+                console.log('all data', resultAll);
+                console.log('ascending data', resultAs);
+                console.log('descending data', resultDs);
+                setMyToys(resultAll);
+                setMyToysAs(resultAs);
+                setMyToysDs(resultDs);
+            })
     }, [url]);
+
+
+
+    const [selectedOption, setSelectedOption] = useState('Sort by price');
+
+    const handleClick = () => {
+        const value = event.target.innerText;
+        console.log(value);
+
+        if(value == 'Low to high'){
+            //as
+            setMyToys(mytoysAs);
+        } 
+        else if(value == 'High to low'){
+            setMyToys(mytoysDs);
+        }
+
+        setSelectedOption(value);
+
+        const elem = document.activeElement;
+        console.log(elem);
+        if (elem) {
+            elem?.blur();
+        }
+    };
 
 
     return (
         <div className="pt-20">
-            <h3 className="text-4xl text-[#7ec7b5] w-[85%] mx-auto mb-10 font-extrabold inline ml-24">Your toys</h3>
-            {/* <p className="text-base text-[#7ec7b5] inline"> all fun</p> */}
+            <div className="flex justify-between items-center">
+                <h3 className="text-4xl text-[#7ec7b5] w-[85%] mx-auto mb-10 font-extrabold inline ml-24">Your toys</h3>
+                {/* <p className="text-base text-[#7ec7b5] inline"> all fun</p> */}
+
+
+                <div className="dropdown dropdown-bottom dropdown-end mr-24">
+                    <button
+                        tabIndex={0}
+                        className="w-40 px-1 py-1 mb-3 hover:bg-slate-100 border hover:text-black">
+                        {selectedOption}
+                    </button>
+                    <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 border">
+                        <li onClick={handleClick}><a className="hover:bg-slate-200 focus:bg-slate-200">Low to high</a></li>
+                        <li onClick={handleClick}><a className="hover:bg-slate-200 focus:bg-slate-200">High to low</a></li>
+                    </ul>
+                </div>
+
+
+            </div>
+
 
 
             <div className="w-[90%] mx-auto mt-14 mb-20">

@@ -33,7 +33,7 @@ const AddAToy = () => {
         const toy = {
             name: toyName,
             pictureUrl: photo,
-            price,
+            price: parseInt(price),
             rating,
             category,
             sellerName,
