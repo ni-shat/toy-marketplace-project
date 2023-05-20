@@ -1,26 +1,33 @@
 import { faBangladeshiTakaSign } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Rating } from '@smastrom/react-rating';
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Navigate  } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../../providers/AuthProviders';
 
 const Toy = ({ toy }) => {
 
-    const { _id, pictureUrl, name, price, rating, category } = toy;
+    const { user } = useContext(AuthContext);
+    console.log("user", user);
+
+    const { _id, pictureUrl, name, price, rating, category, description, sellerName, sellerEmail } = toy;
     const [isClicked, setIsClicked] = useState(false);
-    const navigate = useNavigate();
+    
 
     const handleViewDetails = () => {
-        
-        Swal.fire({
-            position: 'top-middle',
-            icon: 'success',
-            title: 'You have to log in first to view details',
-            showConfirmButton: false,
-            timer: 1500
-          })
-        navigate('/view-details', { replace: true });
+
+        if (!user?.email) {
+            Swal.fire({
+                position: 'top-middle',
+                icon: 'success',
+                title: 'You have to log in first to view details',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+
+        setIsClicked(true);
     }
 
 
@@ -43,19 +50,10 @@ const Toy = ({ toy }) => {
                     </div>
                     {/* <Link to='/view-details'> */}
                     <button onClick={handleViewDetails} className="btn border-0 btn-primary bg-[#70b2a2] hover:bg-slate-300 font-semibold">View Details</button>
-                    {/* {
-                        isClicked && <>
-                            <div className="toast toast-top ">
-
-                                <div className="alert bg-slate-200 w-60 h-20">
-                                    <div>
-                                        <p>You have to login first</p>
-                                    </div>
-                                </div>
-                            </div></>
-                    } */}
-
-                    {/* </Link> */}
+                    {
+                        isClicked &&
+                        <Navigate state={{ _id, pictureUrl, name, price, rating, category, description, sellerName, sellerEmail }} to='/view-details' replace></Navigate>
+                    }
 
 
                 </div>

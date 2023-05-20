@@ -7,14 +7,14 @@ import { useEffect, useState } from "react";
 
 const Home = () => {
     // const loadedToys = useLoaderData();
-    const [loadedToys, setLoadedToys] = useState([]);
-    console.log("data from home", loadedToys)
+    // const [loadedToys, setLoadedToys] = useState([]);
+    // console.log("data from home", loadedToys)
 
-    useEffect( () => {
-        fetch('http://localhost:5000/toys')
-        .then(res => res.json())
-        .then(data => setLoadedToys(data))
-    }, []);
+    // useEffect( () => {
+    //     fetch('http://localhost:5000/toys')
+    //     .then(res => res.json())
+    //     .then(data => setLoadedToys(data))
+    // }, []);
 
     return (
         <div>

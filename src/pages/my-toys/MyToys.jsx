@@ -1,7 +1,6 @@
 import MyToy from "./MyToy";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
-import Dropdown from "../../components/Dropdown";
 
 
 const MyToys = () => {
