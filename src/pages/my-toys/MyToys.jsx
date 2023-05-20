@@ -31,7 +31,8 @@ const MyToys = () => {
                     <thead>
                         <tr>
                             <th className="pb-10 pt-10 px-8"></th>
-                            <th className="pb-10 pt-10 px-8 pl-14">Name</th>
+                            <th className="pb-10 pt-10 px-8 pl-14">Toy
+                            </th>
                             <th className="pb-10 pt-10 px-8">Quantity</th>
                             <th className="pb-10 pt-10 px-8">Category</th>
                             <th className="pb-10 pt-10 px-8">Rating</th>
@@ -45,6 +46,8 @@ const MyToys = () => {
                                 key={toy._id}
                                 nmb={mytoys.indexOf(toy) + 1}
                                 toyDetails={toy}
+                                setMyToys={setMyToys}
+                                mytoys={mytoys}
                             ></MyToy>)
                         }
                     </tbody>

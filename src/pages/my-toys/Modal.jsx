@@ -4,7 +4,7 @@ import RetrieveCategories from "../../utilities/retrieve-categories/RetrieveCate
 import Option from "../../components/Option";
 
 
-const Modal = ({ id, setClickedUpdate,  isUpdated, setIsUpdated}) => {
+const Modal = ({ id, setClickedUpdate,  isUpdated, setIsUpdated, setMyToys, mytoys}) => {
 
     const [toy, setToy] = useState([]);
 
@@ -42,7 +42,7 @@ const Modal = ({ id, setClickedUpdate,  isUpdated, setIsUpdated}) => {
         const description = form.description.value;
         const email = user?.email;
         const rating = form.rating.value;
-        const category = selectedOption;
+        const category = selectedOption || toy?.category;
         const updated_toy = {
             name: toyName,
             pictureUrl: photo,
@@ -67,14 +67,24 @@ const Modal = ({ id, setClickedUpdate,  isUpdated, setIsUpdated}) => {
             .then(data => {
                 console.log(data);
                 if (data.modifiedCount > 0) {
-                    // update state
-                    // const remaining = bookings.filter(booking => booking._id !== id);
-                    // const updated = bookings.find(booking => booking._id === id);
-                    // updated.status = 'confirm'
-                    // const newBookings = [updated, ...remaining];
-                    // setBookings(newBookings);
                     alert('updated');
                     setIsUpdated(true);
+
+                    const remaining = mytoys.filter(toy => toy._id !== id);
+                    const updated = mytoys.find(toy => toy._id === id);
+
+                    updated.name = toyName;
+                    updated.pictureUrl = photo;
+                    updated.price = price;
+                    updated.rating = rating;
+                    updated.category = category;
+                    updated.sellerName = sellerName;
+                    updated.sellerEmail = email;
+                    updated.availableQuantity = quantity;
+                    updated.description = description;
+
+                    const newToys = [updated, ...remaining];
+                    setMyToys(newToys);
                 }
             })
 

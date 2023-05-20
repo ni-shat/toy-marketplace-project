@@ -7,7 +7,7 @@ import { AuthContext } from "../../providers/AuthProviders";
 import Modal from "./Modal";
 
 
-const MyToy = ({ toyDetails, nmb }) => {
+const MyToy = ({ toyDetails, nmb, setMyToys, mytoys }) => {
 
     // const { user } = useContext(AuthContext);
     const [clickedUpdate, setClickedUpdate] = useState(false);
@@ -68,9 +68,16 @@ const MyToy = ({ toyDetails, nmb }) => {
                         <FontAwesomeIcon icon={faPenToSquare} />
                     </label>
                     {
-                        clickedUpdate && <Modal id={_id} setIsUpdated={setIsUpdated} isUpdated={isUpdated} setClickedUpdate={setClickedUpdate}></Modal> 
+                        clickedUpdate && <Modal
+                            id={_id}
+                            setIsUpdated={setIsUpdated}
+                            isUpdated={isUpdated}
+                            setClickedUpdate={setClickedUpdate}
+                            setMyToys={setMyToys}
+                            mytoys={mytoys}
+                        ></Modal>
                     }
-                    
+
 
 
                     <button className="btn w-32 text-red-600 border-red-600 btn-primary bg-white border hover:bg-slate-200 font-semibold flex gap-3 items-center">
