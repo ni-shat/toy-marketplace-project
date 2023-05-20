@@ -1,7 +1,7 @@
 
 
 const Option = ({ category }) => {
-    console.log(category)
+    
     return (
         <option>
             {category}

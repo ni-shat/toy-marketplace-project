@@ -8,8 +8,12 @@ const AllToys = () => {
     // console.log(loadedToys);
 
     return (
-        <div>
-            <div className="w-[90%] mx-auto mt-14">
+        <div className="pt-20">
+             <h3 className="text-4xl text-[#7ec7b5] w-[85%] mx-auto mb-10 font-extrabold inline ml-24">All toys</h3>
+             <p className="text-base text-[#7ec7b5] inline"> all fun</p>
+
+
+            <div className="w-[90%] mx-auto mt-14 mb-20">
                 <table className="table w-full">
                     {/* head */}
                     <thead>
@@ -33,16 +37,7 @@ const AllToys = () => {
                             ></TableRow>)
                         }
                     </tbody>
-                    {/* foot */}
-                    <tfoot>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
-                            <th></th>
-                        </tr>
-                    </tfoot>
+                    
 
                 </table>
             </div>
