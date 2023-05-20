@@ -106,7 +106,7 @@ const Modal = ({id, setClickedUpdate}) => {
                                     </label>
                                     <label className="input-group">
                                         <span className="w-[90px]">name</span>
-                                        <input type="text" defaultValue={toy?.name} name="toyName"  className="input flex-grow input-bordered" />
+                                        <input type="text" defaultValue={toy?.name} name="toyName"  className="input flex-grow input-bordered font-normal" />
                                     </label>
                                 </div>
                                 <div className="form-control w-2/4">
@@ -115,7 +115,7 @@ const Modal = ({id, setClickedUpdate}) => {
                                     </label>
                                     <label className="input-group">
                                         <span className="w-[90px]">url</span>
-                                        <input type="text" name="photo" placeholder="url" className="input flex-grow input-bordered" />
+                                        <input type="text" defaultValue={toy?.pictureUrl} name="photo" placeholder="Please provide a valid url" className="input flex-grow input-bordered font-normal" />
                                     </label>
                                 </div>
                             </div>
@@ -126,7 +126,7 @@ const Modal = ({id, setClickedUpdate}) => {
                                     </label>
                                     <label className="input-group">
                                         <span className="w-[90px]">quantity</span>
-                                        <input type="text" name="quantity" placeholder="4" className="input flex-grow input-bordered" />
+                                        <input type="text" defaultValue={toy?.availableQuantity} name="quantity" placeholder="4" className="input flex-grow input-bordered font-normal" />
                                     </label>
                                 </div>
                                 <div className="form-control w-2/4">
@@ -135,7 +135,7 @@ const Modal = ({id, setClickedUpdate}) => {
                                     </label>
                                     <label className="input-group">
                                         <span className="w-[90px]">price</span>
-                                        <input type="text" name="price" placeholder="25" className="input flex-grow input-bordered" />
+                                        <input type="text" defaultValue={toy?.price} name="price" placeholder="25" className="input flex-grow input-bordered font-normal" />
                                     </label>
                                 </div>
                             </div>
@@ -146,7 +146,7 @@ const Modal = ({id, setClickedUpdate}) => {
                                     </label>
                                     <label className="input-group">
                                         <span className="w-[90px]">name</span>
-                                        <input type="text" defaultValue={user?.displayName} name="sellerName" placeholder="john" className="input flex-grow input-bordered" readOnly />
+                                        <input type="text" defaultValue={user?.displayName} name="sellerName" placeholder="john" className="input flex-grow input-bordered font-normal" readOnly />
                                     </label>
                                 </div>
                                 <div className="form-control w-2/4 ">
@@ -155,7 +155,7 @@ const Modal = ({id, setClickedUpdate}) => {
                                     </label>
                                     <label className="input-group">
                                         <span className="w-[90px]">email</span>
-                                        <input type="text" defaultValue={user?.email} placeholder="info@site.com" className="input flex-grow input-bordered" readOnly />
+                                        <input type="text" defaultValue={user?.email} placeholder="info@site.com" className="input flex-grow input-bordered font-normal" readOnly />
                                     </label>
                                 </div>
                             </div>
@@ -166,7 +166,7 @@ const Modal = ({id, setClickedUpdate}) => {
                                     </label>
                                     <label className="input-group">
                                         <span className="w-[90px]">rating</span>
-                                        <input type="text" name="rating" placeholder="4.5" className="input flex-grow input-bordered" />
+                                        <input type="text" name="rating" placeholder="4.5" className="input flex-grow input-bordered font-normal" />
                                     </label>
                                 </div>
                                 <div className="form-control w-2/4">
@@ -176,18 +176,13 @@ const Modal = ({id, setClickedUpdate}) => {
                                     <label className="input-group">
                                         <span className="w-[90px]">category</span>
                                         <select value={selectedOption} onChange={handleOptionChange} className="select select-bordered text-gray-800 font-normal w-full flex-1">
-                                            <option disabled selected></option>
+                                            <option disabled selected>{toy?.category}</option>
                                             {
                                                 categoriesAr.map(category => <Option
                                                     key={categoriesAr.indexOf(category)}
                                                     category={category}
                                                 ></Option>)
                                             }
-                                            {/* <option>Star Wars</option>
-                                        <option>Harry Potter</option>
-                                        <option>Lord of the Rings</option>
-                                        <option>Planet of the Apes</option>
-                                        <option>Star Trek</option> */}
                                         </select>
                                     </label>
                                 </div>
@@ -199,12 +194,12 @@ const Modal = ({id, setClickedUpdate}) => {
                                 <label className="label">
                                     <span className="label-text">Detail description</span>
                                 </label>
-                                <textarea className="textarea textarea-bordered h-24" name="description" placeholder="description"></textarea>
+                                <textarea defaultValue={toy?.description} className="textarea textarea-bordered h-24 font-normal" name="description" placeholder="description"></textarea>
                             </div>
 
 
                             <div className="form-control">
-                                <input type="submit" value="Add" className="btn mt-8 px-10 bg-[#ED71A3] text-white font-semibold border-0" />
+                                <input type="submit" value="Update" className="btn mt-8 px-10 bg-[#ED71A3] text-white font-semibold border-0" />
                             </div>
                         </form>
                     </div>
