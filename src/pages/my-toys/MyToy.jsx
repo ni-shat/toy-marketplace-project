@@ -11,13 +11,14 @@ const MyToy = ({ toyDetails, nmb }) => {
 
     // const { user } = useContext(AuthContext);
     const [clickedUpdate, setClickedUpdate] = useState(false);
+    const [isUpdated, setIsUpdated] = useState(false); console.log(isUpdated)
 
     const { _id, pictureUrl, name, price, rating, availableQuantity, category, description } = toyDetails;
     console.log("in my toy", toyDetails)
 
     const handleUpdate = (id) => {
         console.log('function', id);
-
+        setIsUpdated(false);
         setClickedUpdate(true);
     }
 
@@ -67,7 +68,7 @@ const MyToy = ({ toyDetails, nmb }) => {
                         <FontAwesomeIcon icon={faPenToSquare} />
                     </label>
                     {
-                        clickedUpdate && <Modal id={_id} setClickedUpdate={setClickedUpdate}></Modal> 
+                        clickedUpdate && <Modal id={_id} setIsUpdated={setIsUpdated} isUpdated={isUpdated} setClickedUpdate={setClickedUpdate}></Modal> 
                     }
                     
 

@@ -4,9 +4,9 @@ import RetrieveCategories from "../../utilities/retrieve-categories/RetrieveCate
 import Option from "../../components/Option";
 
 
-const Modal = ({id, setClickedUpdate}) => {
+const Modal = ({ id, setClickedUpdate,  isUpdated, setIsUpdated}) => {
 
-    const [toy, setToy] = useState([]); 
+    const [toy, setToy] = useState([]);
 
     const url = `http://localhost:5000/toys/${id}`;
 
@@ -16,12 +16,12 @@ const Modal = ({id, setClickedUpdate}) => {
             .then(data => setToy(data))
     }, [id]);
 
-    console.log("in modal ",toy)
+    console.log("in modal ", toy)
     //somossha hoy je, data load howar agei render hoye jay!
 
     // setClickedUpdate(false);
-   
-    
+
+
 
     const [selectedOption, setSelectedOption] = useState('');
     const { user } = useContext(AuthContext);
@@ -43,7 +43,7 @@ const Modal = ({id, setClickedUpdate}) => {
         const email = user?.email;
         const rating = form.rating.value;
         const category = selectedOption;
-        const toy = {
+        const updated_toy = {
             name: toyName,
             pictureUrl: photo,
             price,
@@ -61,7 +61,7 @@ const Modal = ({id, setClickedUpdate}) => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(toy)
+            body: JSON.stringify(updated_toy)
         })
             .then(res => res.json())
             .then(data => {
@@ -74,6 +74,7 @@ const Modal = ({id, setClickedUpdate}) => {
                     // const newBookings = [updated, ...remaining];
                     // setBookings(newBookings);
                     alert('updated');
+                    setIsUpdated(true);
                 }
             })
 
@@ -86,6 +87,11 @@ const Modal = ({id, setClickedUpdate}) => {
 
     const handleCross = () => {
         setClickedUpdate(false);
+    }
+
+    if(isUpdated){
+        console.log("updated")
+        return;
     }
 
 
@@ -106,7 +112,7 @@ const Modal = ({id, setClickedUpdate}) => {
                                     </label>
                                     <label className="input-group">
                                         <span className="w-[90px]">name</span>
-                                        <input type="text" defaultValue={toy?.name} name="toyName"  className="input flex-grow input-bordered font-normal" />
+                                        <input type="text" defaultValue={toy?.name} name="toyName" className="input flex-grow input-bordered font-normal" />
                                     </label>
                                 </div>
                                 <div className="form-control w-2/4">
@@ -166,7 +172,7 @@ const Modal = ({id, setClickedUpdate}) => {
                                     </label>
                                     <label className="input-group">
                                         <span className="w-[90px]">rating</span>
-                                        <input type="text" name="rating" placeholder="4.5" className="input flex-grow input-bordered font-normal" />
+                                        <input type="text" defaultValue={toy?.rating} name="rating" placeholder="4.5" className="input flex-grow input-bordered font-normal" />
                                     </label>
                                 </div>
                                 <div className="form-control w-2/4">
@@ -176,7 +182,11 @@ const Modal = ({id, setClickedUpdate}) => {
                                     <label className="input-group">
                                         <span className="w-[90px]">category</span>
                                         <select value={selectedOption} onChange={handleOptionChange} className="select select-bordered text-gray-800 font-normal w-full flex-1">
-                                            <option disabled selected>{toy?.category}</option>
+                                            <option selected>
+                                                {
+                                                    toy? toy.category : ""
+                                                }
+                                            </option>
                                             {
                                                 categoriesAr.map(category => <Option
                                                     key={categoriesAr.indexOf(category)}
