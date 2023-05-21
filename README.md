@@ -19,3 +19,9 @@ Welcome to the Toy Marketplace, a website dedicated to providing a wide variety 
 
 
 The Toy Marketplace is a vibrant platform where users can discover and purchase a multitude of animal toys for children. With its user-friendly interface, detailed toy information, and personalized features, our website aims to create an enjoyable and convenient toy shopping experience. So start exploring the exciting world of animal toys today and bring joy to the little ones in your life!
+
+
+
+
+
+### Live site: https://toy-marketplace-auth-34634.web.app/
