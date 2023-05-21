@@ -100,7 +100,7 @@ const MyToy = ({ toyDetails, nmb, setMyToys, mytoys }) => {
                     </div>
                 </td>
                 <th>
-                    <label htmlFor="my-modal-3" onClick={() => handleUpdate(_id)} className="btn w-32 mb-3 border-0  btn-primary bg-[#70b2a2] hover:bg-slate-200 font-semibold flex gap-2 items-center">
+                    <label htmlFor="my-modal-3" onClick={() => handleUpdate(_id)} className="btn w-32 mb-3 border-0 btn-primary bg-[#70b2a2] hover:bg-slate-200 font-semibold flex gap-2 items-center">
                         <span>Update </span>
                         <FontAwesomeIcon icon={faPenToSquare} />
                     </label>

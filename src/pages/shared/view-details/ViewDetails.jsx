@@ -1,11 +1,10 @@
 import { faBangladeshiTakaSign } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Rating } from '@smastrom/react-rating';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const ViewDetails = () => {
-
 
     const location = useLocation();
 

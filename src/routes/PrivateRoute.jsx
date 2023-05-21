@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProviders";
 import { Navigate, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
+import { RotateLoader } from "react-spinners";
 
 
 const PrivateRoute = ({ children }) => {
@@ -29,9 +30,8 @@ const PrivateRoute = ({ children }) => {
 
     if (loading) {
         return <div className="md:w-[80%] w-[85%] relative mb60">
-            <div className="absolute right-10 top-32">
-                {/* <RiseLoader color="#ED8B1F" /> */}
-                loading
+            <div className="absolute right-10 top-52 pb-40">
+                <RotateLoader  color="#36d7b7" />
             </div>
 
         </div>

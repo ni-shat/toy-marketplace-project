@@ -3,13 +3,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaAngleRight, FaArrowRight } from "react-icons/fa";
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
+import { Link, Navigate } from "react-router-dom";
+import { useState } from "react";
 
 
 const TableRow = ({ toyDetails, nmb }) => {
 
-    const { _id, pictureUrl, name, price, rating, availableQuantity, category, sellerName } = toyDetails;
+    const { _id, pictureUrl, name, price, rating, availableQuantity, category, sellerName, description, sellerEmail } = toyDetails;
     // console.log(_id, pictureUrl, name, price, rating, category)
+    const [isClicked, setIsClicked] = useState(false);
 
+    const handleViewDetails = () => {
+
+        setIsClicked(true);
+    }
 
     return (
         <tr>
@@ -50,10 +57,14 @@ const TableRow = ({ toyDetails, nmb }) => {
                 {sellerName}
             </td>
             <th>
-                <button className="btn border-0  btn-primary bg-[#70b2a2] hover:bg-slate-200 font-semibold flex gap-3 items-center">
-                    <span>Details </span>
+                <button onClick={handleViewDetails} className="btn border-0  btn-primary bg-[#70b2a2] hover:bg-slate-200 font-semibold flex gap-3 items-center">
+                    <span>Details</span>
                     <span><FaAngleRight /></span>
                 </button>
+                {
+                    isClicked &&
+                    <Navigate state={{ _id, pictureUrl, name, price, rating, category, description, sellerName, sellerEmail }} to='/view-details' ></Navigate>
+                }
             </th>
         </tr>
     );

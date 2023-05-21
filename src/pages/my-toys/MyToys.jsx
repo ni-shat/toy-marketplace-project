@@ -61,7 +61,6 @@ const MyToys = () => {
                 <h3 className="text-4xl text-[#7ec7b5] w-[85%] mx-auto mb-10 font-extrabold inline ml-24">Your toys</h3>
                 {/* <p className="text-base text-[#7ec7b5] inline"> all fun</p> */}
 
-
                 <div className="dropdown dropdown-bottom dropdown-end mr-24">
                     <button
                         tabIndex={0}
@@ -73,10 +72,7 @@ const MyToys = () => {
                         <li onClick={handleClick}><a className="hover:bg-slate-200 focus:bg-slate-200">High to low</a></li>
                     </ul>
                 </div>
-
-
             </div>
-
 
 
             <div className="w-[90%] mx-auto mt-14 mb-20">

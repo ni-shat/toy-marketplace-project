@@ -17,16 +17,6 @@ const Toy = ({ toy }) => {
 
     const handleViewDetails = () => {
 
-        // if (!user?.email) {
-        //     Swal.fire({
-        //         position: 'top-middle',
-        //         icon: 'info',
-        //         title: 'You have to log in first to view details',
-        //         showConfirmButton: false,
-        //         timer: 1500
-        //     })
-        // }
-
         setIsClicked(true);
     }
 
