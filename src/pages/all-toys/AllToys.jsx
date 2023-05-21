@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import TableRow from "../../components/TableRow";
 import { FaArrowCircleRight } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 
 
 const AllToys = () => {
@@ -11,22 +11,13 @@ const AllToys = () => {
     // const [clickedSeeAll, setClickedSeeAll] = useState(false);
     const [loadedToys, setLoadedToys] = useState(toys);
 
-    //     set search query to empty string
-    const [q, setQ] = useState("");
-    const [searchParam] = useState(["capital", "name"]);
-
-
-    // const handleSeeAll = () => {
-    //     console.log("handle see all");
-    //     setClickedSeeAll(true);
-    // }
 
     const handleSearch = (event) => {
 
         let text = event.target.value; console.log(text)
 
         if(!text){
-            // set
+            // 
         }
         else {
             const searchedToys = toys.filter( toy => toy.name.toLowerCase().includes(text.toLowerCase()) || toy.category.toLowerCase().includes(text.toLowerCase()) );
@@ -40,8 +31,6 @@ const AllToys = () => {
                 setLoadedToys(toys);
             }
            
-            // setSearchResults(searchedToys);
-            // const se = loadedToys.filter(toy => console.log("in all toys search and body",toy.name.includes('T'), ":toy name:", toy.name));
         }
     }
 

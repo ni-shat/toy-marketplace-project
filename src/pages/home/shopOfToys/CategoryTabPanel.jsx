@@ -11,7 +11,7 @@ const CategoryTabPanel = ({ toysByCategory, toysOfCategories }) => {
     return (
         <div> 
             {/* <hr className=" w-[85%] mx-auto -mt-7 mb-14" /> */}
-            <div className='grid grid-cols-1 md:grid-cols-2 mx-auto lg:grid-cols-3 gap-x-8 gap-y-20 justify-between w-fit mt-4'>
+            <div className='grid grid-cols-1 md:grid-cols-2 mx-auto lg:grid-cols-3 gap-x-8 gap-y-7 md:gap-y-20 justify-between w-fit mt-4'>
                 {/* value */}
                 {
                     toysByCategory.map(toy => <Toy

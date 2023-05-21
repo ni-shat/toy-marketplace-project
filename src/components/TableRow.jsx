@@ -10,7 +10,7 @@ import { useState } from "react";
 const TableRow = ({ toyDetails, nmb }) => {
 
     const { _id, pictureUrl, name, price, rating, availableQuantity, category, sellerName, description, sellerEmail } = toyDetails;
-    // console.log(_id, pictureUrl, name, price, rating, category)
+
     const [isClicked, setIsClicked] = useState(false);
 
     const handleViewDetails = () => {
@@ -63,7 +63,7 @@ const TableRow = ({ toyDetails, nmb }) => {
                 </button>
                 {
                     isClicked &&
-                    <Navigate state={{ _id, pictureUrl, name, price, rating, category, description, sellerName, sellerEmail }} to='/view-details' ></Navigate>
+                    <Navigate state={{ _id, pictureUrl, name, price, rating, category, description, sellerName, sellerEmail }} replace to='/view-details' ></Navigate>
                 }
             </th>
         </tr>

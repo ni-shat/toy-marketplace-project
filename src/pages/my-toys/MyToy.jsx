@@ -15,7 +15,7 @@ const MyToy = ({ toyDetails, nmb, setMyToys, mytoys }) => {
     const [isUpdated, setIsUpdated] = useState(false); console.log(isUpdated)
 
     const { _id, pictureUrl, name, price, rating, availableQuantity, category, description } = toyDetails;
-    
+
 
     const handleUpdate = (id) => {
         // console.log('function', id);
@@ -34,28 +34,35 @@ const MyToy = ({ toyDetails, nmb, setMyToys, mytoys }) => {
             cancelButtonColor: '#7ec7b5',
             confirmButtonText: 'Yes, delete it!'
         })
-        .then((result) => {
+            .then((result) => {
 
-            if (result.isConfirmed) {
+                if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/toys/${id}`, {
-                    method: 'DELETE'
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data);
-                        if (data.deletedCount > 0) {
-                            Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
-                                'success'
-                            )
-                            const remaining = mytoys.filter(toy => toy._id !== id);
-                            setMyToys(remaining);
-                        }
+                    fetch(`https://a-11-server-seven.vercel.app/toys/${id}`, {
+                        method: 'DELETE'
                     })
-            }
-        })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            if (data.deletedCount > 0) {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your file has been deleted.',
+                                    'success'
+                                )
+                                // Swal.fire({
+                                //     position: 'center',
+                                //     icon: 'success',
+                                //     title: 'Successfully added',
+                                //     showConfirmButton: false,
+                                //     timer: 800
+                                // })
+                                const remaining = mytoys.filter(toy => toy._id !== id);
+                                setMyToys(remaining);
+                            }
+                        })
+                }
+            })
     }
 
 

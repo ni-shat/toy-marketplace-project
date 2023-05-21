@@ -9,7 +9,7 @@ import tree from '../../assets/banner/tree-2.png'
 
 const Banner = () => {
     return (
-        <div className='flex  pb-10'>
+        <div className='flex md:flex-row flex-col-reverse  pb-10'>
             <div className=''>
                 <img className='w-[40%] absolute top-[250px] -left-[100px]  opacity-10' src={pic2} alt="" />
             </div>
@@ -20,9 +20,9 @@ const Banner = () => {
                 <img className='w-[20%] absolute top-[500px] right-10  opacity-10' src={elephant} alt="" />
             </div>
             {/* <img src={banner} alt="" /> */}
-            <div className=' w-[35%] mx-auto mt-32 md:ml-36'>
-                <h1 className='text-5xl text-gray-600 font-medium '>Explore and Shop the Best Toys!</h1>
-                <p className='text-base text-gray-500  mt-8 leading-8'>
+            <div className='w-[95%] md:w-[35%] mx-auto mt-[300px] md:mt-32 md:ml-36'>
+                <h1 className='md:text-5xl text-xl w-[60%] text-center md:text-left mx-auto text-[#5b9284] md:text-gray-600 font-extrabold md:font-medium '>Explore and Shop the Best Toys!</h1>
+                <p className='md:text-base text-xs w-[90%] text-center md:text-left mx-auto text-gray-500 mt-3 md:mt-8 leading-normal md:leading-8'>
                     Dive into a World of Toys and Imagination!
                     Discover, Connect, and Create Unforgettable Memories! Join the Parade of Playfulness and Find Your Perfect Toy Companion.
                 </p>

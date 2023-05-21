@@ -21,12 +21,11 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        // loader: () => fetch('http://localhost:5000/toys')
       },
       {
         path: 'all-toys',
         element: <AllToys></AllToys>,
-        loader: () => fetch('http://localhost:5000/all-toys')
+        loader: () => fetch('https://a-11-server-seven.vercel.app/all-toys')
       },
       {
         path: 'view-details',

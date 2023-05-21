@@ -6,12 +6,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../home/shopOfToys/style.css';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProviders';
+import Swal from 'sweetalert2';
 
 const Register = () => {
 
     const { createUser, loginWithGoogle, update, setLoading } = useContext(AuthContext);
     const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
     const navigate = useNavigate();
 
 
@@ -42,8 +42,14 @@ const Register = () => {
                 // Signed in 
                 console.log(userCredential.user);
                 update_user(userCredential.user, name, photo);
-                // navigate('/', { replace: true });
-                setSuccess("Your account jas been successfully created!")
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Successfully registered',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                navigate('/', { replace: true });
                 form.reset();
             })
             .catch((error) => {
@@ -56,7 +62,7 @@ const Register = () => {
     const handleGoogleLogin = () => {
         loginWithGoogle()
             .then((result) => {
-                // navigate('/', { replace: true });
+                navigate('/', { replace: true });
                 console.log(result.user);
             }).catch((error) => {
                 console.log(error);
@@ -97,6 +103,9 @@ const Register = () => {
                 {/* <div className="absolute h-full w-full  inset-0 bg-gradient-to-b from-transparent to-black bg-blend-multiply"></div> */}
             </div>
             <div className='w-[650px] h-fit px-8 pt-20 transparent-bg  absolute top-60 left-0 right-0 ml-auto mr-auto rounded-lg border'>
+                <div>
+                    <p className='text-red-600 mb-5 -mt-3'>{error}</p>
+                </div>
                 <form onSubmit={handleRegister} className='space-y-5'>
                     <div className='flex gap-4 justify-between'>
                         <div className="form-control w-2/4">
@@ -105,7 +114,7 @@ const Register = () => {
                             </label>
                             <label className=" ">
 
-                                <input type="text" name='name' placeholder="john" className="input flex-grow rounded-md w-full text-gray-800" />
+                                <input type="text" name='name' placeholder="john" className="input flex-grow rounded-md w-full text-gray-800" required />
                             </label>
                         </div>
                         <div className="form-control w-2/4">
@@ -114,7 +123,7 @@ const Register = () => {
                             </label>
                             <label className="">
 
-                                <input type="text" name='email' placeholder="info@site.com" className="input flex-grow rounded-md w-full text-gray-800" />
+                                <input type="email" name='email' placeholder="info@site.com" className="input flex-grow rounded-md w-full text-gray-800" required />
                             </label>
                         </div>
                     </div>
@@ -125,7 +134,7 @@ const Register = () => {
                             </label>
                             <label className=" ">
 
-                                <input type="text" name='password' placeholder="password" className="input flex-grow rounded-md w-full text-gray-800" />
+                                <input type="password" name='password' placeholder="password" className="input flex-grow rounded-md w-full text-gray-800" required />
                             </label>
                         </div>
                         <div className="form-control w-2/4">
@@ -134,7 +143,7 @@ const Register = () => {
                             </label>
                             <label className="">
 
-                                <input type="text" name='confirmPassword' placeholder="password" className="input flex-grow rounded-md w-full text-gray-800" />
+                                <input type="password" name='confirmPassword' placeholder="password" className="input flex-grow rounded-md w-full text-gray-800" required />
                             </label>
                         </div>
                     </div>
@@ -145,7 +154,7 @@ const Register = () => {
                         </label>
                         <label className="">
 
-                            <input type="text" name='photo' placeholder="url" className="input flex-grow rounded-md w-full text-gray-800" />
+                            <input type="text" name='photo' placeholder="url" className="input flex-grow rounded-md w-full text-gray-800" required />
                         </label>
                     </div>
                     <div className="form-control">

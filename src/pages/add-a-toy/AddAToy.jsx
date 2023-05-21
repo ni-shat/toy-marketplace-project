@@ -42,7 +42,7 @@ const AddAToy = () => {
             description
         };
 
-        fetch('http://localhost:5000/toy', {
+        fetch('https://a-11-server-seven.vercel.app/toy', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -54,11 +54,12 @@ const AddAToy = () => {
                 console.log(data);
                 if (data.insertedId) {
                     Swal.fire({
-                        title: 'success!',
-                        text: 'Added',
-                        icon: 'Successfully added.',
-                        confirmButtonText: 'Cool'
-                    })
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Successfully added',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
                 }
             })
     }

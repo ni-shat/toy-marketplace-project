@@ -2,13 +2,14 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import RetrieveCategories from "../../utilities/retrieve-categories/RetrieveCategories";
 import Option from "../../components/Option";
+import Swal from "sweetalert2";
 
 
-const Modal = ({ id, setClickedUpdate,  isUpdated, setIsUpdated, setMyToys, mytoys}) => {
+const Modal = ({ id, setClickedUpdate, isUpdated, setIsUpdated, setMyToys, mytoys }) => {
 
     const [toy, setToy] = useState([]);
 
-    const url = `http://localhost:5000/toys/${id}`;
+    const url = `https://a-11-server-seven.vercel.app/toys/${id}`;
 
     useEffect(() => {
         fetch(url)
@@ -17,17 +18,12 @@ const Modal = ({ id, setClickedUpdate,  isUpdated, setIsUpdated, setMyToys, myto
     }, [id]);
 
     console.log("in modal ", toy)
-    //somossha hoy je, data load howar agei render hoye jay!
-
-    // setClickedUpdate(false);
-
 
 
     const [selectedOption, setSelectedOption] = useState('');
     const { user } = useContext(AuthContext);
 
     const { categoriesAr } = RetrieveCategories();
-    // console.log("categories inside add toy", categoriesAr)
 
 
     const handleUpdate = (event) => {
@@ -56,7 +52,7 @@ const Modal = ({ id, setClickedUpdate,  isUpdated, setIsUpdated, setMyToys, myto
         };
 
 
-        fetch(`http://localhost:5000/toys/${id}`, {
+        fetch(`https://a-11-server-seven.vercel.app/toys/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -67,7 +63,13 @@ const Modal = ({ id, setClickedUpdate,  isUpdated, setIsUpdated, setMyToys, myto
             .then(data => {
                 console.log(data);
                 if (data.modifiedCount > 0) {
-                    alert('updated');
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Updated!',
+                        showConfirmButton: false,
+                        timer: 800
+                    })
                     setIsUpdated(true);
 
                     const remaining = mytoys.filter(toy => toy._id !== id);
@@ -99,7 +101,7 @@ const Modal = ({ id, setClickedUpdate,  isUpdated, setIsUpdated, setMyToys, myto
         setClickedUpdate(false);
     }
 
-    if(isUpdated){
+    if (isUpdated) {
         console.log("updated")
         return;
     }
@@ -194,7 +196,7 @@ const Modal = ({ id, setClickedUpdate,  isUpdated, setIsUpdated, setMyToys, myto
                                         <select value={selectedOption} onChange={handleOptionChange} className="select select-bordered text-gray-800 font-normal w-full flex-1">
                                             <option selected>
                                                 {
-                                                    toy? toy.category : ""
+                                                    toy ? toy.category : ""
                                                 }
                                             </option>
                                             {

@@ -10,7 +10,7 @@ const RetrieveCategories = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/toys')
+        fetch('https://a-11-server-seven.vercel.app/toys')
             .then(res => res.json())
             .then(data => setLoadedData(data))
     }, []);

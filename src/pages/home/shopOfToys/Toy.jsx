@@ -22,8 +22,8 @@ const Toy = ({ toy }) => {
 
 
     return (
-        <div className="card bg-base-100 shadow-xl w-[385px] h-[580px]">
-            <figure className='w-[385px] h-[350px] border'><img className='object-cover rounded-lg' src={pictureUrl} alt="toy" /></figure>
+        <div className="card bg-base-100 shadow-xl w-full md:w-[385px] md:h-[580px]">
+            <figure className='h-[280px] md:w-[385px] md:h-[350px] border'><img className='object-cover rounded-lg' src={pictureUrl} alt="toy" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>
                 <div className=''>
@@ -33,7 +33,7 @@ const Toy = ({ toy }) => {
                     </div>
                 </div>
 
-                <div className="card-actions flex items-center justify-between mt-8">
+                <div className="card-actions flex items-center justify-between mt-5 md:mt-8">
                     <div className="flex gap-1.5">
                         <span>{rating} </span>
                         <Rating style={{ maxWidth: 60 }} value={rating} readOnly />
