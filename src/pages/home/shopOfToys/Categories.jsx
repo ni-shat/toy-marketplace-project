@@ -29,7 +29,7 @@ const Categories = () => {
 
         return (
             <Tabs className='md:mt-20 mt-5 w-[85%] mx-auto' selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)} id="controlled-tabs" selectedTabClassName="bg-blue">
-                <TabList className='md:ml-10 ml-0 md:pb-10 pb-2' >
+                <TabList className='md:ml-10 ml-0 md:pb-10 pb-2 hover:cursor-pointer' >
 
                     {
                         categoriesAr.map(category => <Tab tabindex="-1"
@@ -47,7 +47,7 @@ const Categories = () => {
                                 categoriesAr.map(category => <>
 
                                     <Tab onClick={handleClick} tabindex="-1"
-                                        className=' focus:bg-slate-50 focus:rounded-lg focus:border-b focus:border-cyan-500 px-3 block  mr-2 text-gray-600 py-1 text-xs'
+                                        className=' focus:bg-slate-50  focus:rounded-lg focus:border-b focus:border-cyan-500 px-3 block  mr-2 text-gray-600 py-1 text-xs'
                                         key={categoriesAr.indexOf(category)}
                                     >
                                         {category}

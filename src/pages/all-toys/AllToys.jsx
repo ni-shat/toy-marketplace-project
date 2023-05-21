@@ -1,7 +1,7 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation } from "react-router-dom";
 import TableRow from "../../components/TableRow";
 import { FaArrowCircleRight } from "react-icons/fa";
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
 
 
 const AllToys = () => {
@@ -10,6 +10,11 @@ const AllToys = () => {
 
     // const [clickedSeeAll, setClickedSeeAll] = useState(false);
     const [loadedToys, setLoadedToys] = useState(toys);
+
+
+    useEffect(() => {
+        document.title = "Toy Box - all toys";
+     }, []);
 
 
     const handleSearch = (event) => {

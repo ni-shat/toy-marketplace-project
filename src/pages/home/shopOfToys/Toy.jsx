@@ -1,10 +1,12 @@
 import { faBangladeshiTakaSign } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Rating } from '@smastrom/react-rating';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Navigate  } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../../providers/AuthProviders';
+import AOS from 'aos';
+import 'aos/dist/aos.css'
 
 const Toy = ({ toy }) => {
 
@@ -20,9 +22,13 @@ const Toy = ({ toy }) => {
         setIsClicked(true);
     }
 
+    useEffect(() => {
+        AOS.init();
+      }, [])
+
 
     return (
-        <div className="card bg-base-100 shadow-xl w-full md:w-[385px] md:h-[580px]">
+        <div data-aos="fade-up" className="card bg-base-100 shadow-xl w-full md:w-[385px] md:h-[580px]">
             <figure className='h-[280px] md:w-[385px] md:h-[350px] border'><img className='object-cover rounded-lg' src={pictureUrl} alt="toy" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>

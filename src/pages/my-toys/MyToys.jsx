@@ -12,6 +12,10 @@ const MyToys = () => {
     const [mytoysAs, setMyToysAs] = useState([]);
     const [mytoysDs, setMyToysDs] = useState([]);
 
+    useEffect(() => {
+        document.title = "Toy Box - my toys";
+     }, []);
+
     const url = `https://a-11-server-seven.vercel.app/mytoys?email=${user?.email}`;
 
     useEffect(() => {

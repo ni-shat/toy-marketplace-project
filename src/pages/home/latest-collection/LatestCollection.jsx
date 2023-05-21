@@ -14,7 +14,7 @@ const LatestCollection = () => {
 
 
     return (
-        <div className="md:mt-52 mt-20 w-[100%] mx-auto ">
+        <div className="md:mt-[170px] mt-20 w-[100%] mx-auto ">
             <h2 className="md:text-4xl text-xl w-[60%] mx-auto text-gray-800 text-center font-bold">Our Latest Collection</h2>
             <p className="md:py-6 py-2 text-xs md:text-base text-center">The Ultimate Toy Wonderland</p>
 

@@ -1,6 +1,6 @@
 import Header from "../shared/header/Header";
 import bear from '../../assets/auth/bear.jpeg';
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Swal from 'sweetalert2'
 import { AuthContext } from "../../providers/AuthProviders";
 import RetrieveCategories from "../../utilities/retrieve-categories/RetrieveCategories";
@@ -11,6 +11,10 @@ const AddAToy = () => {
 
     const [selectedOption, setSelectedOption] = useState('');
     const { user } = useContext(AuthContext);
+
+    useEffect(() => {
+        document.title = "Toy Box - add a toy";
+     }, []);
 
     const { categoriesAr } = RetrieveCategories();
     console.log("categories inside add toy", categoriesAr)

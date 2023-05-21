@@ -2,7 +2,7 @@ import kid from '../../../assets/homePagePictures/kid.png';
 
 const NewLetter = () => {
     return (
-        <div className='md:mt-[300px] mt-[240px]'>
+        <div className='md:mt-[280px] mt-[240px]'>
             <div className='relative '>
                 <div className='text-white absolute h-[185px] z-10 w-full bg-[#F8F8F8] top-[50px] md:top-[120px]'>
                     

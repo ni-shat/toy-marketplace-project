@@ -1,6 +1,12 @@
+import { useEffect } from "react";
 
 
 const Blogs = () => {
+
+    useEffect(() => {
+        document.title = "Toy Box - blog";
+     }, []);
+
     return (
         <div className="text-gray-800 w-[90%] mx-auto mt-16 md:mt-32 md:w-[80%] relative">
 

@@ -2,7 +2,7 @@ import logo from '../../../assets/logo/logo2.png'
 
 const Footer = () => {
     return (
-        <footer className="footer p-10 bg-gray-100 md:px-44  md:text-base-content mx-auto  md:text-base text-xs text-center grid grid-cols-2 gap-14 md:grid-cols-4 md:gap-10 justify-around mt-20 md:mt-52 ">
+        <footer className="footer p-10 bg-gray-100 md:px-44  md:text-base-content mx-auto  md:text-base text-xs text-center grid grid-cols-2 gap-14 md:grid-cols-4 md:gap-10 justify-around mt-20 md:mt-60 ">
             <div>
                 <div className="md:w-[98px] md:h-[127px] w-10 h-10 mb-5">
                     {/* <a className="btn btn-ghost normal-case text-xl">TOY BOX</a> */}

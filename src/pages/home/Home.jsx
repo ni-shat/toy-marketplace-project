@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation } from "react-router-dom";
 import Banner from "./Banner";
 import Toys from "./shopOfToys/Toys";
 import Categories from "./shopOfToys/Categories";
@@ -9,6 +9,10 @@ import NewLetter from "./new-letter/NewLetter";
 
 
 const Home = () => {
+
+    useEffect(() => {
+        document.title = "Toy Box - toy marketplace";
+     }, []);
 
     return (
         <div>

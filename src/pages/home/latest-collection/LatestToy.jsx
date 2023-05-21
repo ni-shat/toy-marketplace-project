@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 const LatestToy = ({ toy }) => {
@@ -13,9 +15,13 @@ const LatestToy = ({ toy }) => {
         setIsClicked(true);
     }
 
+    useEffect(() => {
+        AOS.init();
+      }, [])
+
     return (
         <>
-            <button onClick={handleViewDetails} className="flex justify-center items-center">
+            <button data-aos="fade-left" onClick={handleViewDetails} className="flex justify-center items-center">
                 <img 
 
                 className='hover:scale-105 duration-500 rounded border-2 h-[200px] md:h-[300px] shadow-xl  drop-shadow-xl w-[full] md:w-[300px] object-cover ' 

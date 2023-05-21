@@ -5,7 +5,7 @@ import { FaArrowCircleRight } from "react-icons/fa";
 const Sale = () => {
     return (
         <div>
-            <div className='md:mt-40 mt-[90px] md:px-5 flex flex-col md:flex-row items-center gap-5 md:gap-14  bg-white'>
+            <div className='md:mt-[170px] mt-[90px] md:px-5 flex flex-col md:flex-row items-center gap-5 md:gap-14  bg-white'>
                 <div className='bg-[#F9EEF6] px-4 flex items-center md:w-2/4 hover:cursor-pointer'>
                     <img className='md:w-2/4 w-full md:h-[220px] h-[100px] object-cover' src={sale1} alt="" />
                     <div>
