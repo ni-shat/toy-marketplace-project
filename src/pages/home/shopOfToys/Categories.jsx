@@ -14,9 +14,7 @@ const Categories = () => {
     return (
         <Tabs className='mt-20 w-[85%] mx-auto' selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)} id="controlled-tabs" selectedTabClassName="bg-blue">
             <TabList className='ml-10 pb-10' >
-                {/* {
-                    categoriesAr.map(category => <CategoryTab key={loadedData._id} CategoryTab={category}></CategoryTab>)
-                } */}
+                
                 {
                     categoriesAr.map(category => <Tab tabindex="-1" className='focus:bg-slate-50 focus:rounded-lg focus:border-b focus:border-cyan-500 px-3 inline mr-2 text-gray-600 py-3' key={categoriesAr.indexOf(category)}>{category}</Tab>)
                 }

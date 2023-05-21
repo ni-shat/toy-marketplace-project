@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import MyToys from "../pages/my-toys/MyToys";
 import AllToys from "../pages/all-toys/AllToys";
 import ViewDetails from "../pages/shared/view-details/ViewDetails";
+import Blogs from "../pages/blogs/Blogs";
 
 
 const router = createBrowserRouter([
@@ -30,7 +31,11 @@ const router = createBrowserRouter([
       {
         path: 'view-details',
         element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute> 
-      }
+      },
+      {
+        path: '/blogs',
+        element: <Blogs></Blogs>
+      },
     ]
   },
   {
